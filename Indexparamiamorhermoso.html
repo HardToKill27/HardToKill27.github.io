@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Romyna quieres ser mi "San Valentín?</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif, sans-serif;
+            background-image: url(Foto\ fav.jpg);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #formulario {
+            background-color: #ffe3fe;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #videoContainer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main id="formulario">
+        <header>
+            <h1>¿Romyna quieres ser mi "San Valentín"?</h1>
+        </header>
+        <form id="respuestaForm">
+            <div>
+                <label for="nombre">Ya me sé tu nombre pero igual ponlo jiji</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div>
+                <label for="respuesta">Elige una respuesta (si me dices que no lloro)</label>
+                <select id="respuesta" name="respuesta" required onchange="mostrarVideo(this.value)">
+                    <option value="">Piénsalo bien jiji</option>
+                    <option value="si">Sí amor, me encantaría ser tu San Valentín</option>
+                    <option value="no">Claro que no, te odio con toda mi vida</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+        <div id="videoContainer">
+            <video id="video" width="320" height="240" controls>
+                <source src="Chipi chipi chapa chapa cat.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </main>
+
+    <script>
+        function mostrarVideo(respuesta) {
+            var videoContainer = document.getElementById("videoContainer");
+            var video = document.getElementById("video");
+            if (respuesta === "si") {
+                video.src = "Chipi chipi chapa chapa cat.mp4";
+                videoContainer.style.display = "block";
+                video.play();
+            } else {
+                video.src = "Gatito llorando.mp4";
+                videoContainer.style.display = "block";
+                video.play();
+            }
+        }
+
+        document.getElementById("respuestaForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            var nombre = document.getElementById("nombre").value;
+            var respuesta = document.getElementById("respuesta").value;
+            if(respuesta === "si"){
+                alert("¡Hola "+ nombre  + "! ¡Seré tu cita de San Valentín! 💕");
+            } else if(respuesta === "no") {
+                alert("Me odias y por eso elegiste no pipipi 😔");
+            }
+            // Puedes agregar más lógica aquí, como enviar los datos a un servidor o redirigir a otra página.
+        });
+    </script>
+</body>
+</html>
